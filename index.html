@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NEUZ-A — Polished News App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app" class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar filters">
+      <div class="sidebar-inner">
+        <h2 class="brand">NEUZ-A</h2>
+
+        <div class="sidebar-section">
+          <label class="section-title">View</label>
+          <div class="switches">
+            <button id="themeToggle" class="switch">Dark</button>
+            <button id="glassToggle" class="switch">Glass</button>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <label class="section-title">Mode</label>
+          <button id="modeToggle" class="mode-btn">Mode: Static</button>
+        </div>
+
+        <div class="sidebar-section">
+          <label class="section-title">Country</label>
+          <select id="countrySelect" class="select">
+            <option value="all">All countries</option>
+            <option value="us">United States</option>
+            <option value="gb">United Kingdom</option>
+            <option value="ca">Canada</option>
+            <option value="au">Australia</option>
+            <option value="in">India</option>
+            <option value="de">Germany</option>
+            <option value="fr">France</option>
+            <option value="it">Italy</option>
+            <option value="es">Spain</option>
+            <option value="nl">Netherlands</option>
+            <option value="se">Sweden</option>
+            <option value="no">Norway</option>
+            <option value="dk">Denmark</option>
+            <option value="jp">Japan</option>
+            <option value="kr">South Korea</option>
+            <option value="br">Brazil</option>
+            <option value="mx">Mexico</option>
+            <option value="za">South Africa</option>
+            <option value="ru">Russia</option>
+          </select>
+        </div>
+
+        <div class="sidebar-section">
+          <label class="section-title">Category</label>
+          <select id="categorySelect" class="select">
+            <option value="all">All</option>
+            <option value="business">Business</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="general">General</option>
+            <option value="health">Health</option>
+            <option value="science">Science</option>
+            <option value="sports">Sports</option>
+            <option value="technology">Technology</option>
+          </select>
+        </div>
+
+        <div class="sidebar-section">
+          <label class="section-title">Saved</label>
+          <button id="openSaved" class="smallbtn">Open Saved Panel</button>
+          <button id="clearSaved" class="smallbtn ghost">Clear Saved</button>
+        </div>
+
+        <div class="sidebar-footer">
+          <small>Built by anurima  • NEUZ-A</small>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN AREA -->
+    <div class="main">
+      <header class="topbar">
+        <div class="top-left">
+          <button id="sidebarToggle" class="icon-btn" aria-label="Toggle sidebar">☰</button>
+          <h1 class="title">NEUZ-A Live</h1>
+        </div>
+
+        <div class="controls">
+          <div class="search">
+            <input id="searchInput" placeholder="Search headlines..." aria-label="Search headlines">
+          </div>
+
+          <div class="top-actions">
+            <button id="refreshBtn" class="smallbtn">Refresh</button>
+            <a id="liveHint" class="pill muted">Static</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="content" id="content">
+        <section id="grid" class="grid" aria-live="polite" tabindex="-1"></section>
+
+        <div class="loader" id="loader">Scroll to load more — or click <button id="loadMore" class="smallbtn">Load more</button></div>
+        <div class="status" id="status"></div>
+      </main>
+    </div>
+
+    <!-- SAVED PANEL (right) -->
+    <aside class="saved-panel" id="savedPanel" aria-label="Saved articles">
+      <div class="saved-inner">
+        <div class="saved-header">
+          <h3>Saved Articles</h3>
+          <button id="closeSaved" class="icon-btn">✕</button>
+        </div>
+        <div id="savedList" class="saved-list"></div>
+      </div>
+    </aside>
+
+    <!-- MODAL -->
+    <div id="overlay" class="overlay" aria-hidden="true">
+      <article class="modal" role="dialog" aria-modal="true" aria-label="Article detail">
+        <button id="modalClose" class="modal-close" aria-label="Close modal">✕</button>
+        <div class="modal-media" id="modalMedia"></div>
+        <div class="modal-body">
+          <h2 id="modalTitle"></h2>
+          <p id="modalDesc" class="muted"></p>
+          <div class="modal-actions">
+            <a id="modalRead" class="readmore" target="_blank" rel="noopener noreferrer">Open original →</a>
+            <button id="modalSave" class="smallbtn">Save</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
